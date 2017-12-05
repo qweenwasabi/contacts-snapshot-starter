@@ -9,18 +9,22 @@
     "db:reset": "dropdb contacts_development && createdb contacts_development && npm run load_schema",
     "load_schema": "psql -d contacts_development < src/models/db/schema/schema.sql",
     "load_contacts": "psql -d contacts_development < test/seed/contacts.sql",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "db:init":"npm run db:reset && npm run load_schema && npm run load_contacts",
+    "test": "mocha --exit"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.1",
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
     "ejs": "^2.5.6",
     "express": "^4.15.2",
     "pg-promise": "^6.2.1"
   },
   "devDependencies": {
+    "mocha": "^4.0.1",
     "nodemon": "^1.11.0"
   }
 }
